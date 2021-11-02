@@ -1,0 +1,40 @@
+.table {
+  font-size: 25px;
+  margin: 40px 0;
+  background-color: brown;
+}
+
+.table__symbol {
+  display: inline-block;
+  margin: 0  52px;
+}
+
+.table__columns-numbers {
+  display: inline-flex;
+  flex-direction: row;
+  width: 70%;
+  margin: 0 105px 0 0;
+}
+
+.table__rows-numbers {
+  display: inline-flex;
+  flex-direction: column;
+  margin-bottom: 100px;
+}
+
+.table__rows-numbers span {
+  padding: 30px 55px;
+}
+
+.table__inside {
+  display: inline-grid;
+  gap: 0 35%;
+  height: 100%;
+  width: 87%;
+  margin: 10px 0 0 0;
+}
+
+.table__gag {
+  width: 19.66px;
+  height: 25px;
+}
