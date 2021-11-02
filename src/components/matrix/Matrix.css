@@ -25,7 +25,7 @@
 .matrix__cell {
   display: grid;
   position: absolute;
-  top: -999px;
+  top: -998px;
   width: 0;
   height: 0;
 
