@@ -13,5 +13,4 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.12.12 
         with:
           HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "matrix-builder1" 
           heroku_email: "friedrich.wilhelm.victor.alber@gmail.com"
