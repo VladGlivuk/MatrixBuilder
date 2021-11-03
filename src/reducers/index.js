@@ -5,7 +5,7 @@ import parametersReducer from "./parametersReducer";
 
 const rootReducer = combineReducers({
   table: tableReducer,
-  parameters: parametersReducer
+  parameters: parametersReducer,
 })
 
 export const store = createStore(rootReducer)
