@@ -16,13 +16,13 @@ function Matrix () {
   let matrix = [];
 
    for (let i = 0; i < rows+1; i++) {
-    matrix = [...matrix, [<div className="matrix__cell"></div>]]
+    matrix = [...matrix, [<div className="matrix__cell" key={nanoid()}></div>]]
   } 
   console.log(matrix)
 
   for (let item of matrix) {
     for (let i = 0; i < columns+1; i++) {
-     item.push(<span className="cell">{Math.floor(Math.random()*(999-100+1)+100)}</span>)
+     item.push(<span className="cell" key={nanoid()}>{Math.floor(Math.random()*(999-100+1)+100)}</span>)
     }
   }
   

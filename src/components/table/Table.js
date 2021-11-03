@@ -21,7 +21,7 @@ function Table () {
   }
 
   return (
-    <div className="table">npm install -g firebase-tools
+    <div className="table">
        <div className="table__symbol">№</div>
       <div className="table__columns-numbers">
         {topPanel} 
