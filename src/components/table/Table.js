@@ -13,7 +13,7 @@ function Table () {
   const topPanel = []
   const bottomPanel = []
   for (let i = 1; i <= columns; i++) {
-    topPanel.push(<span key={nanoid()} style={columns > 3 ? {padding: "0 7.8%"} : columns === 3  ? {padding: " 0 8.9%"} : columns === 2  ? {padding: "0 80px"} : {padding: "0 8%"}}>{i}</span>)
+    topPanel.push(<span key={nanoid()} style={columns > 3 ? {padding: "0 8%"} : columns === 3  ? {padding: " 0 7.85%"} : columns === 2  ? {padding: "0 67px"} : {padding: "0 8%"}}>{i}</span>)
    }
 
   for (let i = 1; i <= rows; i++) {
@@ -25,7 +25,7 @@ function Table () {
        <div className="table__symbol">№</div>
       <div className="table__columns-numbers">
         {topPanel} 
-        <span style={columns > 3 ? {padding: "0 7.8%"} : columns === 3  ? {padding: " 0 9%"} : columns === 2  ? {padding: "0 80px"} : {padding: "0 8.5%"}}>Sum</span>
+        <span style={columns > 8 ? {padding: "0 50px"} : columns > 3 ? {padding: "0 6%"} : columns === 3  ? {padding: " 0 7%"} : columns === 2  ? {padding: "0 35px"} : {padding: "0 2%"}}>Sum</span>
       </div>
       <div className="table__rows-numbers">
         {bottomPanel}

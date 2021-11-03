@@ -16,21 +16,20 @@ function Matrix () {
   let matrix = [];
 
    for (let i = 0; i < rows+1; i++) {
-    matrix = [...matrix, [<div className="matrix__cell" key={nanoid()}></div>]]
+    matrix = [...matrix, []]
   } 
+  // <div className="matrix__cell" key={nanoid()}></div>
   console.log(matrix)
 
   for (let item of matrix) {
     for (let i = 0; i < columns+1; i++) {
      item.push(<span className="cell" key={nanoid()}>{Math.floor(Math.random()*(999-100+1)+100)}</span>)
     }
+    item.push(<button type="submit" key={nanoid()} className="btn__delete fa fa-trash btn-lg"></button>)
   }
-  
   console.log(matrix)
   return (
-    <div style={columns > 3 ? {display: "inline-grid", gridTemplateColumns: `repeat(${columns+1}, 1fr)`, gridTemplateRows: `repeat(${rows}, 1fr`, gap: "0 10%",
-    width: "60%", margin: "10px 0 0 12px"} : columns === 3 ? {display: "inline-grid", gridTemplateColumns: `repeat(${columns+1}, 1fr)`, gridTemplateRows: `repeat(${rows}, 1fr`, gap: "0 10%", width: "60%", margin: "10px 0 0 12px"} : columns === 2 ? {display: "inline-grid", gridTemplateColumns: `repeat(${columns+1}, 1fr)`, gridTemplateRows: `repeat(${rows}, 1fr`, gap: "0 1", width: "50%", margin: "10px 0 0 12px"} : {display: "inline-grid", gridTemplateColumns: `repeat(${columns+1}, 1fr)`, gridTemplateRows: `repeat(${rows}, 1fr`, gap: "0 10%",
-    width: "30%", margin: "10px 0 0 12px"} }>
+    <div style={columns > 3 ? {display: "inline-grid", gridTemplateColumns: `repeat(${columns+2}, 1fr)`, gridTemplateRows: `repeat(${rows}, 1fr`, gap: "0 10%", width: "60%", margin: "10px 0 0 12px"} : columns === 3 ? {display: "inline-grid", gridTemplateColumns: `repeat(${columns+2}, 1fr)`, gridTemplateRows: `repeat(${rows}, 1fr`, gap: "0 10%", width: "60%", margin: "10px 0 0 12px"} : columns === 2 ? {display: "inline-grid", gridTemplateColumns: `repeat(${columns+2}, 1fr)`, gridTemplateRows: `repeat(${rows}, 1fr`, gap: "0 1", width: "50%", margin: "10px 0 0 12px"} : {display: "inline-grid", gridTemplateColumns: `repeat(${columns+2}, 1fr)`, gridTemplateRows: `repeat(${rows}, 1fr`, gap: "0 10%", width: "30%", margin: "10px 0 0 12px"}}>
      {matrix}
    </div>
   ) 
