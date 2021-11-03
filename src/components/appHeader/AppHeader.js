@@ -1,11 +1,13 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setIsTableVisible } from '../../reducers/tableReducer';
 import "./AppHeader.css"
 import { setCells, setColumns, setRows } from '../../reducers/parametersReducer';
+import { setInputRowValue } from '../../reducers/rowInputValueReducer';
 
 function AppHeader () {
 
   const dispatch = useDispatch()
+  let inputRowValue = useSelector(state => state.rowInputValueReducer.inputRowValue)
 
   function handleColumns (e) {
     dispatch(setColumns(+e.target.value))
@@ -13,6 +15,9 @@ function AppHeader () {
 
   function handleRows (e) {
     dispatch(setRows(+e.target.value));
+    dispatch(setInputRowValue(+e.target.value))
+    console.log(inputRowValue)
+    e.target.value = inputRowValue
   } 
 
   function handleCells (e) {
