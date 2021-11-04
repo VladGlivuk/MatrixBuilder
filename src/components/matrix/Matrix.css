@@ -36,3 +36,7 @@
   height: 50px;
 }
 
+.btn__delete:last-child {
+  display: none;
+}
+

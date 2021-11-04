@@ -1,7 +1,7 @@
 import { SET_MATRIX } from "./types"
 
 export const defaultState = {
-  matrix: []
+  globalMatrix: []
 }
 
 export default function matrixReducer (state = defaultState, action) {
@@ -9,7 +9,7 @@ export default function matrixReducer (state = defaultState, action) {
     case SET_MATRIX:
       return {
         ...state,
-        matrix: action.payload 
+        globalMatrix: action.payload 
       }
 
     default: 
@@ -17,4 +17,4 @@ export default function matrixReducer (state = defaultState, action) {
   }
 }
 
-export const setMatrix = (matrix) => ({type:SET_MATRIX, payload:matrix})
+export const setMatrix = (globalMatrix) => ({type:SET_MATRIX, payload:globalMatrix})
