@@ -1,4 +1,4 @@
-import Matrix from "../matrix/Matrix"
+import Matrix from "../MatrixTable"
 import { nanoid } from "nanoid"
 import { useSelector } from "react-redux"
 import "./Table.css"
@@ -19,6 +19,8 @@ function Table () {
   for (let i = 1; i <= rows; i++) {
     bottomPanel.push(<span key={nanoid()}>{i}</span>)
   }
+
+  
 
   return (
     <div className="table">
