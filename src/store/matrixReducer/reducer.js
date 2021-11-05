@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import { SET_MATRIX } from "../action-types";
+import { DELETE_ROW, SET_MATRIX } from "../action-types";
 
 const initialState = {
   globalMatrix: [],
@@ -32,6 +32,14 @@ const matrixReducer = (state = initialState, action) => {
         settings: payload,
       };
     }
+
+    case DELETE_ROW:
+      return {
+        ...state,
+        globalMatrix: state.globalMatrix.filter(
+          (_row, index) => index !== payload
+        ),
+      };
 
     default:
       return state;

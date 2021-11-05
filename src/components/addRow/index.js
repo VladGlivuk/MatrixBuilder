@@ -1,9 +1,8 @@
 import "./AddRow.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 function AddRow() {
   const dispatch = useDispatch();
-  let rows = useSelector((state) => state.parameters.rows);
 
   return (
     <div className="add-row">

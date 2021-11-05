@@ -1,7 +1,2 @@
-export const SET_IS_TABLE_VISIBLE = "SET_IS_TABLE_VISIBLE"
-export const SET_COLUMNS = "SET_COLUMNS"
-export const SET_ROWS = "SET_ROWS"
-export const SET_CELLS = "SET_CELLS"
-export const SET_ADDITIONAL_ROW = "SET_ADDITIONAL_ROW"
-export const SET_INPUT_ROW_VALUE = "SET_INPUT_ROW_VALUE"
-export const SET_MATRIX = "SET_MATRIX"
+export const SET_MATRIX = "SET_MATRIX";
+export const DELETE_ROW = "DELETE_ROW";

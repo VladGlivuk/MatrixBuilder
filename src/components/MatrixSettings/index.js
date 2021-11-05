@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { setMatrix } from "../../store/matrixReducer/actions";
+import SettingField from "./SettingField";
 import "./MatrixSettings.css";
 
 const MatrixSettings = () => {
@@ -13,11 +14,6 @@ const MatrixSettings = () => {
   const settings = useMemo(() => {
     return { cells, rows, columns };
   }, [cells, rows, columns]);
-
-  // change it to states
-  // const columns = useSelector((state) => state.parameters.columns);
-  // const rows = useSelector((state) => state.parameters.rows);
-  // const cells = useSelector((state) => state.parameters.cells);
 
   const handleColumns = (e) => {
     setColumns(+e.target.value);
@@ -38,38 +34,24 @@ const MatrixSettings = () => {
   return (
     <div className="header">
       <div className="header__title">Matrix Builder</div>
-      <div className="header__columns">
-        Enter the number of columns
-        <input
-          type="number"
-          min="1"
-          max="99"
-          name="columns"
-          value={columns}
-          onChange={handleColumns}
-        ></input>
+      <div className="header__form">
+        <SettingField
+          label="Enter the number of columns"
+          inputValue={columns}
+          inputChangeHandler={handleColumns}
+        />
+        <SettingField
+          label="Enter the number of rows"
+          inputValue={rows}
+          inputChangeHandler={handleRows}
+        />
+        <SettingField
+          label="Enter the number of cells"
+          inputValue={cells}
+          inputChangeHandler={handleCells}
+        />
       </div>
-      <div className="header__rows">
-        Enter the number of rows
-        <input
-          type="number"
-          min="1"
-          max="99"
-          value={rows}
-          onChange={handleRows}
-        ></input>
-      </div>
-      <div className="header__cells">
-        Enter the number of cells
-        <input
-          type="number"
-          min="1"
-          max="99"
-          name="cells"
-          value={cells}
-          onChange={handleCells}
-        ></input>
-      </div>
+
       <div className="header__button">
         <button
           className="btn btn-primary btn-lg"
