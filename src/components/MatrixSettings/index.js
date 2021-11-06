@@ -7,9 +7,9 @@ import "./MatrixSettings.css";
 const MatrixSettings = () => {
   const dispatch = useDispatch();
 
-  const [rows, setRows] = useState(0);
-  const [columns, setColumns] = useState(0);
-  const [cells, setCells] = useState(0);
+  const [rows, setRows] = useState('');
+  const [columns, setColumns] = useState('');
+  const [cells, setCells] = useState('');
 
   const settings = useMemo(() => {
     return { cells, rows, columns };

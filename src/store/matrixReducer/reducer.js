@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import { DELETE_ROW, SET_MATRIX } from "../action-types";
+import { ADD_ROW, DELETE_ROW, SET_MATRIX } from "../action-types";
 
 const initialState = {
   globalMatrix: [],
@@ -41,6 +41,19 @@ const matrixReducer = (state = initialState, action) => {
         ),
       };
 
+    case ADD_ROW: {
+      const newRow = [];
+      for (let i = 0; i < state.settings.columns; i++) {
+        newRow.push({
+          id: nanoid(),
+          value: Math.floor(Math.random() * (999 - 100 + 1) + 100),
+        });
+      }
+      return {
+        ...state,
+        globalMatrix: [...state.globalMatrix, newRow],
+      };
+    }
     default:
       return state;
   }

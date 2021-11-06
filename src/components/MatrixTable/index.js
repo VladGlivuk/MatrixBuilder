@@ -1,13 +1,41 @@
+import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import MatrixRow from "./MatrixRow";
+import AddRow from "../addRow/index";
+
 import "./MatrixTable.css";
 
 const MatrixTable = () => {
   const matrix = useSelector((store) => store.matrix.globalMatrix);
+  const columnsCount = useSelector((store) => store.matrix.settings.columns);
+  const matrixHead = useMemo(
+    () =>
+      new Array(columnsCount + 1)
+        .fill(null)
+        .map((_el, index) => (index === 0 ? "№" : index)),
+    [columnsCount]
+  );
 
-  if (!matrix.length) return <div>Please, at first create matrix</div>;
+  if (!matrix.length)
+    return <div className="empty-matrix">Please, at first create matrix</div>;
   return (
-    /* style={
+    <div className="matrix">
+      <AddRow />
+      <div className="matrix__table">
+        {matrixHead.map((el) => (
+          <span key={el}>{el}</span>
+        ))}
+        {matrix.map((row, index) => (
+          <MatrixRow key={index} row={row} index={index} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default MatrixTable;
+
+/* JOKE:  style={
         columns > 3
           ? {
               display: "inline-grid",
@@ -46,13 +74,3 @@ const MatrixTable = () => {
       }
     >
     */
-    <div>
-      <button>Add row</button>
-      {matrix.map((row, index) => (
-        <MatrixRow key={index} row={row} index={index} />
-      ))}
-    </div>
-  );
-};
-
-export default MatrixTable;

@@ -1,7 +1,7 @@
 .cell {
   width: 90px;
   height: 45px;
-  background-color: #4ADAFE;
+  background-color: #4adafe;
   border-radius: 20px;
   font-size: 25px;
   margin: 20px 0;
@@ -13,7 +13,7 @@
 .matrix__cell:last-child {
   width: 90px;
   height: 45px;
-  background-color: #00AC9F;
+  background-color: #00ac9f;
   border-radius: 20px;
   margin: 20px 0;
   font-size: 25px;
@@ -40,3 +40,15 @@
   display: none;
 }
 
+.matrix__table {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.empty-matrix {
+  margin-top: 30px;
+  color: black;
+  font-size: 30px;
+  text-align: center;
+}
