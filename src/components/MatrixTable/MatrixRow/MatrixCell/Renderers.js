@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import "./MatrixCell.css"
+import "./MatrixCell.css";
 
 export const DefaultCell = ({ cell }) => {
   const { value, id } = cell;
@@ -9,12 +9,14 @@ export const DefaultCell = ({ cell }) => {
 
 export const PercentCell = ({ sumRow, cellValue }) => {
   const percentBySum = useMemo(() => {
-    return Math.floor(cellValue/sumRow*100);
+    return Math.floor((cellValue / sumRow) * 100);
   }, [sumRow, cellValue]);
 
   return (
     <div
-      style={{ background: `linear-gradient(red ${percentBySum}%, white)` }}
+      style={{
+        background: `linear-gradient(white ${100 - percentBySum}%, red 100%)`,
+      }}
       className="cell"
     >
       {percentBySum}%

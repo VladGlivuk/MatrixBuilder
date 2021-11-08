@@ -29,6 +29,7 @@ const MatrixTable = () => {
               {el}
             </span>
           ))}
+          <span className="matrix__numbers">Sum</span>
         </div>
         {matrix.map((row, index) => (
           <MatrixRow key={index} row={row} index={index} />
