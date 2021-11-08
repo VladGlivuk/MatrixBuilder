@@ -19,7 +19,7 @@ const MatrixRow = ({ row, index }) => {
 
   return (
     <div className="row">
-      <span>{index + 1}</span>
+      <span className="row__row-numbers">{index + 1}</span>
       {row.map((cell) =>
         isSumHover ? (
           <PercentCell key={cell.id} sumRow={sumRow} cellValue={cell.value} />
@@ -28,12 +28,13 @@ const MatrixRow = ({ row, index }) => {
         )
       )}
       <span
+        className="sum"
         onMouseEnter={() => setIsSumHover(true)}
         onMouseLeave={() => setIsSumHover(false)}
       >
         {sumRow}
       </span>
-      <button onClick={buttonClickHandler}>delete</button>
+      <button onClick={buttonClickHandler} className="btn-delete fa fa-trash btn-light"></button>
     </div>
   );
 };

@@ -18,13 +18,18 @@ const MatrixTable = () => {
 
   if (!matrix.length)
     return <div className="empty-matrix">Please, at first create matrix</div>;
+
   return (
     <div className="matrix">
       <AddRow />
       <div className="matrix__table">
-        {matrixHead.map((el) => (
-          <span key={el}>{el}</span>
-        ))}
+        <div className="matrix__column-numbers">
+          {matrixHead.map((el) => (
+            <span key={el} className="matrix__numbers">
+              {el}
+            </span>
+          ))}
+        </div>
         {matrix.map((row, index) => (
           <MatrixRow key={index} row={row} index={index} />
         ))}
