@@ -8,11 +8,6 @@ const MatrixRow = ({ row, index }) => {
   const dispatch = useDispatch();
   const [isSumHover, setIsSumHover] = useState(false);
 
-  const sumRow = useMemo(
-    () => row.reduce((acc, currentCell) => acc + currentCell.value, 0),
-    [row]
-  );
-
   const buttonClickHandler = () => {
     dispatch(deleteRow(index));
   };
@@ -20,9 +15,9 @@ const MatrixRow = ({ row, index }) => {
   return (
     <div className="row">
       <span className="row__row-numbers">{index + 1}</span>
-      {row.map((cell) =>
+      {row.records.map((cell) =>
         isSumHover ? (
-          <PercentCell key={cell.id} sumRow={sumRow} cellValue={cell.value} />
+          <PercentCell key={cell.id} sumRow={row.sum} cellValue={cell.value} />
         ) : (
           <DefaultCell key={cell.id} cell={cell} />
         )
@@ -32,9 +27,12 @@ const MatrixRow = ({ row, index }) => {
         onMouseEnter={() => setIsSumHover(true)}
         onMouseLeave={() => setIsSumHover(false)}
       >
-        {sumRow}
+        {row.sum}
       </span>
-      <button onClick={buttonClickHandler} className="btn-delete fa fa-trash btn-light"></button>
+      <button
+        onClick={buttonClickHandler}
+        className="btn-delete fa fa-trash btn-light"
+      />
     </div>
   );
 };

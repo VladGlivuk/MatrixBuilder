@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import MatrixRow from "./MatrixRow";
 import AddRow from "../addRow/index";
+import { AverageCell } from "./AverageCell";
 
 import "./MatrixTable.css";
 
@@ -31,9 +32,13 @@ const MatrixTable = () => {
           ))}
           <span className="matrix__numbers">Sum</span>
         </div>
-        {matrix.map((row, index) => (
-          <MatrixRow key={index} row={row} index={index} />
-        ))}
+        <div>
+          {matrix.map((row, index) => (
+            <MatrixRow key={index} row={row} index={index} />
+          ))}
+        </div>
+
+        <AverageCell />
       </div>
     </div>
   );

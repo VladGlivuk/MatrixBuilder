@@ -1,4 +1,4 @@
-import { ADD_ROW, DELETE_ROW, SET_MATRIX } from "../action-types";
+import { ADD_ROW, DELETE_ROW, INCREMENT, SET_MATRIX } from "../action-types";
 
 export const setMatrix = (settings) => ({
   type: SET_MATRIX,
@@ -12,4 +12,9 @@ export const deleteRow = (index) => ({
 
 export const addRow = () => ({
   type: ADD_ROW,
+});
+
+export const increment = (id) => ({
+  type: INCREMENT,
+  payload: id,
 });

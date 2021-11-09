@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import { ADD_ROW, DELETE_ROW, SET_MATRIX } from "../action-types";
+import { ADD_ROW, DELETE_ROW, INCREMENT, SET_MATRIX } from "../action-types";
 
 const initialState = {
   globalMatrix: [],
@@ -17,13 +17,17 @@ const matrixReducer = (state = initialState, action) => {
         initMatrixWithRows.push([]);
       }
       const createdMatrix = initMatrixWithRows.map((rowArr) => {
+        const arrWithValues = [...rowArr];
         for (let i = 0; i < columns; i++) {
-          rowArr.push({
+          arrWithValues.push({
             id: nanoid(),
             value: Math.floor(Math.random() * (999 - 100 + 1) + 100),
           });
         }
-        return rowArr;
+        return {
+          records: arrWithValues,
+          sum: arrWithValues.reduce((acc, curr) => acc + curr.value, 0),
+        };
       });
 
       return {
@@ -54,6 +58,23 @@ const matrixReducer = (state = initialState, action) => {
         globalMatrix: [...state.globalMatrix, newRow],
       };
     }
+
+    case INCREMENT: {
+      const newMatrix = state.globalMatrix.map((row) =>
+        row.records.map((cell) =>
+          cell.id === payload ? { ...cell, value: cell.value + 1 } : cell
+        )
+      );
+
+      return {
+        ...state,
+        globalMatrix: newMatrix.map((row) => ({
+          sum: row.reduce((acc, curr) => acc + curr.value, 0),
+          records: row,
+        })),
+      };
+    }
+
     default:
       return state;
   }

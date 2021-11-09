@@ -1,10 +1,22 @@
 import { useMemo } from "react";
+import { useDispatch } from "react-redux";
+import { increment } from "../../../../store/matrixReducer/actions";
 import "./MatrixCell.css";
 
 export const DefaultCell = ({ cell }) => {
+  const dispatch = useDispatch();
+
   const { value, id } = cell;
 
-  return <div className="cell">{value}</div>;
+  const handleIncrement = () => {
+    dispatch(increment(id));
+  };
+
+  return (
+    <div className="cell" onClick={handleIncrement}>
+      {value}
+    </div>
+  );
 };
 
 export const PercentCell = ({ sumRow, cellValue }) => {
