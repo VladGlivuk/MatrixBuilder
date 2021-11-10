@@ -1,0 +1,15 @@
+.add-row {
+  margin: 70px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.add-row button {
+  color: #086B4A;
+  background-color: #E8FF00;
+  font-size: 22px;
+  width: 200px;
+  height: 70px;
+  border-radius: 30px;
+  font-weight: bold;
+}

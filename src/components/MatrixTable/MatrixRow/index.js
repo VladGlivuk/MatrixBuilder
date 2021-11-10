@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteRow } from "../../../store/matrixReducer/actions";
 import { DefaultCell, PercentCell } from "./MatrixCell/Renderers";

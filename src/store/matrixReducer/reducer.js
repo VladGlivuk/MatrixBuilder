@@ -47,6 +47,7 @@ const matrixReducer = (state = initialState, action) => {
 
     case ADD_ROW: {
       const newRow = [];
+
       for (let i = 0; i < state.settings.columns; i++) {
         newRow.push({
           id: nanoid(),
@@ -55,7 +56,10 @@ const matrixReducer = (state = initialState, action) => {
       }
       return {
         ...state,
-        globalMatrix: [...state.globalMatrix, newRow],
+        globalMatrix: [
+          ...state.globalMatrix,
+          { records: newRow, sum: newRow.reduce((acc, curr) => acc + curr.value, 0) },
+        ],
       };
     }
 

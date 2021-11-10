@@ -6,6 +6,14 @@ import "./MatrixCell.css";
 export const DefaultCell = ({ cell }) => {
   const dispatch = useDispatch();
 
+  // const testmatrix = [
+  //   [843, 234, 759],
+  //   [647, 447, 958],
+  //   [954, 375, 864],
+  // ];
+
+  // const currentValue = 647;
+
   const { value, id } = cell;
 
   const handleIncrement = () => {

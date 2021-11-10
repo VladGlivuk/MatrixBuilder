@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import MatrixRow from "./MatrixRow";
-import AddRow from "../addRow/index";
-import { AverageCell } from "./AverageCell";
+import AddRow from "./AddRow/index.js";
+import { ColumnsAverageRow } from "./ColumnsAverageRow/index";
 
 import "./MatrixTable.css";
 
@@ -38,50 +38,10 @@ const MatrixTable = () => {
           ))}
         </div>
 
-        <AverageCell />
+        <ColumnsAverageRow />
       </div>
     </div>
   );
 };
 
 export default MatrixTable;
-
-/* JOKE:  style={
-        columns > 3
-          ? {
-              display: "inline-grid",
-              gridTemplateColumns: `repeat(${columns + 2}, 1fr)`,
-              gridTemplateRows: `repeat(${rows}, 1fr`,
-              gap: "0 10%",
-              width: "60%",
-              margin: "10px 0 0 12px",
-            }
-          : columns === 3
-          ? {
-              display: "inline-grid",
-              gridTemplateColumns: `repeat(${columns + 2}, 1fr)`,
-              gridTemplateRows: `repeat(${rows}, 1fr`,
-              gap: "0 10%",
-              width: "60%",
-              margin: "10px 0 0 12px",
-            }
-          : columns === 2
-          ? {
-              display: "inline-grid",
-              gridTemplateColumns: `repeat(${columns + 2}, 1fr)`,
-              gridTemplateRows: `repeat(${rows}, 1fr`,
-              gap: "0 1",
-              width: "50%",
-              margin: "10px 0 0 12px",
-            }
-          : {
-              display: "inline-grid",
-              gridTemplateColumns: `repeat(${columns + 2}, 1fr)`,
-              gridTemplateRows: `repeat(${rows}, 1fr`,
-              gap: "0 10%",
-              width: "30%",
-              margin: "10px 0 0 12px",
-            }
-      }
-    >
-    */

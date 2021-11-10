@@ -1,8 +1,8 @@
-import "./AddRow.css";
 import { useDispatch } from "react-redux";
-import { addRow } from "../../store/matrixReducer/actions";
+import { addRow } from "../../../store/matrixReducer/actions";
+import "./AddRow.css";
 
-function AddRow() {
+const AddRow = () => {
   const dispatch = useDispatch();
 
   const buttonClickHandler = () => {
