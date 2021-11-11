@@ -3,6 +3,7 @@ import {
   DELETE_ROW,
   FIND_CLOSEST_CELL_BY_VALUE,
   INCREMENT,
+  ON_MOUSE_LEAVE_CELL,
   SET_MATRIX,
 } from "../action-types";
 
@@ -27,5 +28,10 @@ export const increment = (id) => ({
 
 export const findTheClosestCellByValue = (cell) => ({
   type: FIND_CLOSEST_CELL_BY_VALUE,
+  payload: cell,
+});
+
+export const onMouseLeaveCell = (cell) => ({
+  type: ON_MOUSE_LEAVE_CELL,
   payload: cell,
 });

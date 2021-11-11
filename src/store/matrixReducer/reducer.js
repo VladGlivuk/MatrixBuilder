@@ -4,6 +4,7 @@ import {
   DELETE_ROW,
   FIND_CLOSEST_CELL_BY_VALUE,
   INCREMENT,
+  ON_MOUSE_LEAVE_CELL,
   SET_MATRIX,
 } from "../action-types";
 
@@ -107,6 +108,15 @@ const matrixReducer = (state = initialState, action) => {
         ...state,
         closestCells,
       };
+    }
+
+    case ON_MOUSE_LEAVE_CELL: {
+      const reloadClosestCells = false;
+      
+      return {
+        ...state,
+        closestCells: reloadClosestCells
+      }
     }
 
     default:

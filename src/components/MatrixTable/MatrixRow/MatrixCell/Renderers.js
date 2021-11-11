@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   findTheClosestCellByValue,
   increment,
+  onMouseLeaveCell,
 } from "../../../../store/matrixReducer/actions";
 import "./MatrixCell.css";
 
@@ -14,9 +15,12 @@ export const DefaultCell = ({ cell }) => {
   const closestCells = useSelector((store) => store.matrix.closestCells);
 
   const { value, id } = cell;
-  const isClosest = !!closestCells?.find((item) => item.id === id);
-  console.log(isClosest)
-
+  let isClosest
+  
+  if (closestCells) { 
+     isClosest = !!closestCells?.find((item) => item.id === id)
+  }
+  
   const handleIncrement = () => {
     dispatch(increment(id));
   };
@@ -27,6 +31,7 @@ export const DefaultCell = ({ cell }) => {
   };
 
   const handleLeaveFindCellByValue = () => {
+    dispatch(onMouseLeaveCell(cell))
     setIsCellHover(false)
   }
 
