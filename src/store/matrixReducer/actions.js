@@ -1,4 +1,10 @@
-import { ADD_ROW, DELETE_ROW, INCREMENT, SET_MATRIX } from "../action-types";
+import {
+  ADD_ROW,
+  DELETE_ROW,
+  FIND_CLOSEST_CELL_BY_VALUE,
+  INCREMENT,
+  SET_MATRIX,
+} from "../action-types";
 
 export const setMatrix = (settings) => ({
   type: SET_MATRIX,
@@ -17,4 +23,9 @@ export const addRow = () => ({
 export const increment = (id) => ({
   type: INCREMENT,
   payload: id,
+});
+
+export const findTheClosestCellByValue = (cell) => ({
+  type: FIND_CLOSEST_CELL_BY_VALUE,
+  payload: cell,
 });

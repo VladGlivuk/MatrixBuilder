@@ -37,7 +37,7 @@ export const ColumnsAverageRow = () => {
 
   return (
     <div className="avg">
-      <span className="avg-symbol">Avg</span>
+      <span className="avg">Avg</span>
       {avg?.map((value) => (
         <span key={nanoid()} className="avgCell">
           {value}

@@ -1,27 +1,43 @@
-import { useMemo } from "react";
-import { useDispatch } from "react-redux";
-import { increment } from "../../../../store/matrixReducer/actions";
+import { useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  findTheClosestCellByValue,
+  increment,
+} from "../../../../store/matrixReducer/actions";
 import "./MatrixCell.css";
 
 export const DefaultCell = ({ cell }) => {
   const dispatch = useDispatch();
 
-  // const testmatrix = [
-  //   [843, 234, 759],
-  //   [647, 447, 958],
-  //   [954, 375, 864],
-  // ];
+  const [isCellHover, setIsCellHover] = useState(false);
 
-  // const currentValue = 647;
+  const closestCells = useSelector((store) => store.matrix.closestCells);
 
   const { value, id } = cell;
+  const isClosest = !!closestCells?.find((item) => item.id === id);
+  console.log(isClosest)
 
   const handleIncrement = () => {
     dispatch(increment(id));
   };
 
+  const handleEnterFindCellByValue = () => {
+    dispatch(findTheClosestCellByValue(cell));
+    setIsCellHover(true);
+  };
+
+  const handleLeaveFindCellByValue = () => {
+    setIsCellHover(false)
+  }
+
   return (
-    <div className="cell" onClick={handleIncrement}>
+    <div
+      style={isClosest ? { backgroundColor: "#E8FF00" } : undefined}
+      className={isCellHover ? "hoveredCell" : "cell"}
+      onMouseEnter={handleEnterFindCellByValue}
+      onMouseLeave={handleLeaveFindCellByValue}
+      onClick={handleIncrement}
+    >
       {value}
     </div>
   );

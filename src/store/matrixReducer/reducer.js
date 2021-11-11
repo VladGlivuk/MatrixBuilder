@@ -1,9 +1,16 @@
 import { nanoid } from "nanoid";
-import { ADD_ROW, DELETE_ROW, INCREMENT, SET_MATRIX } from "../action-types";
+import {
+  ADD_ROW,
+  DELETE_ROW,
+  FIND_CLOSEST_CELL_BY_VALUE,
+  INCREMENT,
+  SET_MATRIX,
+} from "../action-types";
 
 const initialState = {
   globalMatrix: [],
   settings: { rows: 0, columns: 0, cells: 0 },
+  closestCells: [],
 };
 
 const matrixReducer = (state = initialState, action) => {
@@ -58,7 +65,10 @@ const matrixReducer = (state = initialState, action) => {
         ...state,
         globalMatrix: [
           ...state.globalMatrix,
-          { records: newRow, sum: newRow.reduce((acc, curr) => acc + curr.value, 0) },
+          {
+            records: newRow,
+            sum: newRow.reduce((acc, curr) => acc + curr.value, 0),
+          },
         ],
       };
     }
@@ -76,6 +86,26 @@ const matrixReducer = (state = initialState, action) => {
           sum: row.reduce((acc, curr) => acc + curr.value, 0),
           records: row,
         })),
+      };
+    }
+
+    case FIND_CLOSEST_CELL_BY_VALUE: {
+      const allValues = state.globalMatrix
+        .map((el) => el.records)
+        .flat()
+        .filter((el) => el.id !== payload.id)
+        .sort(
+          (a, b) =>
+            Math.abs(payload.value - a.value) -
+            Math.abs(payload.value - b.value)
+        );
+
+      const closestCells = allValues.slice(0, state.settings.cells);
+      console.log(closestCells, payload);
+
+      return {
+        ...state,
+        closestCells,
       };
     }
 
