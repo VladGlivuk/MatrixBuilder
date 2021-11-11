@@ -15,14 +15,15 @@ export const DefaultCell = ({ cell }) => {
   const closestCells = useSelector((store) => store.matrix.closestCells);
 
   const { value, id } = cell;
-  let isClosest
-  
-  if (closestCells) { 
-     isClosest = !!closestCells?.find((item) => item.id === id)
+  let isClosest;
+
+  if (closestCells) {
+    isClosest = !!closestCells?.find((item) => item.id === id);
   }
-  
+
   const handleIncrement = () => {
     dispatch(increment(id));
+    handleEnterFindCellByValue();
   };
 
   const handleEnterFindCellByValue = () => {
@@ -31,9 +32,9 @@ export const DefaultCell = ({ cell }) => {
   };
 
   const handleLeaveFindCellByValue = () => {
-    dispatch(onMouseLeaveCell(cell))
-    setIsCellHover(false)
-  }
+    dispatch(onMouseLeaveCell(cell));
+    setIsCellHover(false);
+  };
 
   return (
     <div
