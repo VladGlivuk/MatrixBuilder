@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
+import { Dispatch } from "redux";
 import { useDispatch, useSelector } from "react-redux";
 import {
   findTheClosestCellByValue,
@@ -7,8 +8,14 @@ import {
 } from "../../../../store/matrixReducer/actions";
 import "./MatrixCell.css";
 
-export const DefaultCell = ({ cell }) => {
-  const dispatch = useDispatch();
+interface cellProps {
+  value: number,
+  id: string,
+  cell:object
+} 
+
+export const DefaultCell: React.FC <cellProps> = ({ cell }) => {
+  const dispatch: Dispatch<any>  = useDispatch();
 
   const [isCellHover, setIsCellHover] = useState(false);
 
@@ -49,7 +56,12 @@ export const DefaultCell = ({ cell }) => {
   );
 };
 
-export const PercentCell = ({ sumRow, cellValue }) => {
+interface percentCellProps {
+  sumRow: number,
+  cellValue:number
+}
+
+export const PercentCell: React.FC <percentCellProps> = ({ sumRow, cellValue }) => {
   const percentBySum = useMemo(() => {
     return Math.floor((cellValue / sumRow) * 100);
   }, [sumRow, cellValue]);

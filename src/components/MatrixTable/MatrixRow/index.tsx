@@ -4,7 +4,12 @@ import { deleteRow } from "../../../store/matrixReducer/actions";
 import { DefaultCell, PercentCell } from "./MatrixCell/Renderers";
 import "./MatrixRow.css";
 
-const MatrixRow = ({ row, index }) => {
+  interface MatrixRowProps {
+    row: object,
+    index: number
+  }
+
+const MatrixRow : React.FC <MatrixRowProps> = ({ row, index }) => {
   const dispatch = useDispatch();
   const [isSumHover, setIsSumHover] = useState(false);
 

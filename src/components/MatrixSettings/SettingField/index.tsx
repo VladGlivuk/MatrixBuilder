@@ -1,7 +1,13 @@
 import Input from "../../../shared/components/Input/Index";
 import "./SettingField.css";
 
-const SettingField = ({ label, inputValue, inputChangeHandler }) => {
+interface inputFormProps {
+  label: string,
+  inputValue: number,
+  inputChangeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void
+}
+
+const SettingField: React.FC <inputFormProps> = ({ label, inputValue, inputChangeHandler }) => {
   return (
     <div className="main">
       {label}

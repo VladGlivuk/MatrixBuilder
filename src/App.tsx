@@ -3,7 +3,7 @@ import "./normalize.css";
 import MatrixSettings from "./components/MatrixSettings";
 import MatrixTable from "./components/MatrixTable";
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <div className="wrapper">
       <MatrixSettings />

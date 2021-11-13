@@ -1,12 +1,12 @@
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import MatrixRow from "./MatrixRow";
-import AddRow from "./AddRow/index.js";
+import AddRow from "./AddRow/index.jsx";
 import { ColumnsAverageRow } from "./ColumnsAverageRow/index";
 
 import "./MatrixTable.css";
 
-const MatrixTable = () => {
+const MatrixTable: React.FC = () => {
   const matrix = useSelector((store) => store.matrix.globalMatrix);
   const columnsCount = useSelector((store) => store.matrix.settings.columns);
   const matrixHead = useMemo(

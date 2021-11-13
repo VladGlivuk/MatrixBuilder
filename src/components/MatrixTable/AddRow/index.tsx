@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { addRow } from "../../../store/matrixReducer/actions";
 import "./AddRow.css";
 
-const AddRow = () => {
+const AddRow: React.FC = () => {
   const dispatch = useDispatch();
 
   const buttonClickHandler = () => {

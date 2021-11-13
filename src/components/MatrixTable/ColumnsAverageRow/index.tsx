@@ -3,7 +3,7 @@ import { nanoid } from "nanoid";
 import { useSelector } from "react-redux";
 import "./ColumnsAverageRow.css";
 
-export const ColumnsAverageRow = () => {
+export const ColumnsAverageRow: React.FC = () => {
   const globalMatrix = useSelector((store) => store.matrix.globalMatrix);
   const columns = useSelector((store) => store.matrix.settings.columns);
 

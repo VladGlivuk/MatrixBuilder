@@ -1,6 +1,11 @@
 import "./Input.css";
 
-const Input = ({ value, onChange }) => {
+interface InputProps {
+  value: number,
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+}
+
+const Input: React.FC <InputProps>  = ({ value, onChange }) => {
   return (
     <input
       type="number"
