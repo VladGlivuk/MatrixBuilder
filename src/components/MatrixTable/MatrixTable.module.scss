@@ -1,46 +1,38 @@
-.btn__delete {
-  margin: 20px 0 0 0;
-  width: 50px;
-  height: 50px;
-}
-
-.matrix__table {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.empty-matrix {
+.emptyMatrix {
   margin-top: 30px;
   color: black;
   font-size: 30px;
   text-align: center;
 }
 
-.matrix__column-numbers {
-  display: flex;
-  flex-direction: row;
-  justify-content:center;
-  color: black;
-  font-size: 20px;
-  font-weight: bold;
-  gap: 10px;
-}
-
-.matrix__numbers {
-  width: 90px;
-  height: 45px;
-  border-radius: 20px;
-  font-size: 25px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.matrix__numbers:first-child {
-  width: 20px;
-}
-
-.matrix__numbers:last-child {
-  margin-right: 60px;
+.matrix {
+  .matrix__table {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .matrix__columnNumbers {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      color: black;
+      font-size: 20px;
+      font-weight: bold;
+      gap: 10px;
+    }
+    .matrix__numbers {
+      width: 90px;
+      height: 45px;
+      border-radius: 20px;
+      font-size: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &:first-child {
+        width: 20px;
+      }
+      &:last-child {
+        margin-right: 60px;
+      }
+    }
+  }
 }

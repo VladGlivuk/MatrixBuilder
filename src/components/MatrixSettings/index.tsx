@@ -1,29 +1,31 @@
-import React, { useState, useMemo } from "react";
+import { useState, useMemo, FC, ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
 import { setMatrix } from "../../store/matrixReducer/actions";
 import SettingField from "./SettingField";
-import "./MatrixSettings.css";
+import { Settings } from "../../store/matrixReducer/types";
+import styles from "./MatrixSettings.module.scss";
 
-const MatrixSettings: React.FC = () => {
+const MatrixSettings: FC = () => {
   const dispatch = useDispatch();
 
-  const [rows, setRows] = useState<number>();
-  const [columns, setColumns] = useState<number>();
-  const [cells, setCells] = useState<number>();
+  const [rows, setRows] = useState(0);
+  const [columns, setColumns] = useState(0);
+  const [cells, setCells] = useState(0);
 
-  const settings = useMemo(() => {
-    return { cells, rows, columns };
-  }, [cells, rows, columns]);
+  const settings: Settings = useMemo(
+    () => ({ cells, rows, columns }),
+    [cells, rows, columns]
+  );
 
-  const handleColumns = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleColumns = (event: ChangeEvent<HTMLInputElement>) => {
     setColumns(+event.target.value);
   };
 
-  const handleRows = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleRows = (event: ChangeEvent<HTMLInputElement>) => {
     setRows(+event.target.value);
   };
 
-  const handleCells = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCells = (event: ChangeEvent<HTMLInputElement>) => {
     setCells(+event.target.value);
   };
 
@@ -32,11 +34,11 @@ const MatrixSettings: React.FC = () => {
   };
 
   return (
-    <div className="header">
-      <div className="header__title">Matrix Builder</div>
-      <div className="header__form">
+    <div className={styles.header}>
+      <div className={styles.header__title}>Matrix Builder</div>
+      <div className={styles.header__form}>
         <SettingField
-          label ="Enter the number of columns"
+          label="Enter the number of columns"
           inputValue={columns}
           inputChangeHandler={handleColumns}
         />
@@ -52,7 +54,7 @@ const MatrixSettings: React.FC = () => {
         />
       </div>
 
-      <div className="header__button">
+      <div className={styles.header__button}>
         <button
           className="btn btn-primary btn-lg"
           type="submit"

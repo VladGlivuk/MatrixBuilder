@@ -1,8 +1,9 @@
+import { FC } from "react";
 import { useDispatch } from "react-redux";
 import { addRow } from "../../../store/matrixReducer/actions";
-import "./AddRow.css";
+import styles from "./AddRow.module.scss";
 
-const AddRow: React.FC = () => {
+const AddRow:FC = () => {
   const dispatch = useDispatch();
 
   const buttonClickHandler = () => {
@@ -10,7 +11,7 @@ const AddRow: React.FC = () => {
   };
 
   return (
-    <div className="add-row">
+    <div className={styles.addRow}>
       <button type="button" onClick={buttonClickHandler}>
         Add row
       </button>

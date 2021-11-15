@@ -1,11 +1,13 @@
-import { useMemo } from "react";
+import { FC, useMemo } from "react";
 import { nanoid } from "nanoid";
 import { useSelector } from "react-redux";
-import "./ColumnsAverageRow.css";
+import { IStore } from "../../../store";
 
-export const ColumnsAverageRow: React.FC = () => {
-  const globalMatrix = useSelector((store) => store.matrix.globalMatrix);
-  const columns = useSelector((store) => store.matrix.settings.columns);
+import styles from "./ColumnsAverageRow.module.scss";
+
+export const ColumnsAverageRow: FC = () => {
+  const globalMatrix = useSelector((store: IStore) => store.matrix.globalMatrix);
+  const columns = useSelector((store: IStore) => store.matrix.settings.columns);
 
   const avg = useMemo(() => {
     const avgArr = [];
@@ -36,17 +38,17 @@ export const ColumnsAverageRow: React.FC = () => {
   }, [globalMatrix]);
 
   return (
-    <div className="avg">
-      <span className="avg">Avg</span>
+    <div className={styles.avg}>
+      <span className={styles.avg}>Avg</span>
       {avg?.map((value) => (
-        <span key={nanoid()} className="avgCell">
+        <span key={nanoid()} className={styles.avgCell}>
           {value}
         </span>
       ))}
 
-      <span className="avgCell">
+      <span className={styles.avgCell}>
         {avgSum?.map((value) => (
-          <span key={nanoid()} className="avgCell">
+          <span key={nanoid()} className={styles.avgCell}>
             {value}
           </span>
         ))}

@@ -1,25 +1,27 @@
-import React, { useMemo, useState } from "react";
-import { Dispatch } from "redux";
+import React, { FC, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   findTheClosestCellByValue,
   increment,
   onMouseLeaveCell,
 } from "../../../../store/matrixReducer/actions";
-import "./MatrixCell.css";
 
-interface cellProps {
-  value: number,
-  id: string,
-  cell:object
-} 
+import { Cell } from "../../../../store/matrixReducer/types";
+import { IStore } from "../../../../store";
+import styles from "./DefaultCell.module.scss";
 
-export const DefaultCell: React.FC <cellProps> = ({ cell }) => {
-  const dispatch: Dispatch<any>  = useDispatch();
+interface ICellProps {
+  cell: Cell;
+}
+
+export const DefaultCell: FC<ICellProps> = ({ cell }) => {
+  const dispatch = useDispatch();
 
   const [isCellHover, setIsCellHover] = useState(false);
 
-  const closestCells = useSelector((store) => store.matrix.closestCells);
+  const closestCells = useSelector(
+    (store: IStore) => store.matrix.closestCells
+  );
 
   const { value, id } = cell;
   let isClosest;
@@ -46,7 +48,7 @@ export const DefaultCell: React.FC <cellProps> = ({ cell }) => {
   return (
     <div
       style={isClosest ? { backgroundColor: "#E8FF00" } : undefined}
-      className={isCellHover ? "hoveredCell" : "cell"}
+      className={isCellHover ? styles.hoveredCell : styles.cell}
       onMouseEnter={handleEnterFindCellByValue}
       onMouseLeave={handleLeaveFindCellByValue}
       onClick={handleIncrement}
@@ -56,24 +58,4 @@ export const DefaultCell: React.FC <cellProps> = ({ cell }) => {
   );
 };
 
-interface percentCellProps {
-  sumRow: number,
-  cellValue:number
-}
 
-export const PercentCell: React.FC <percentCellProps> = ({ sumRow, cellValue }) => {
-  const percentBySum = useMemo(() => {
-    return Math.floor((cellValue / sumRow) * 100);
-  }, [sumRow, cellValue]);
-
-  return (
-    <div
-      style={{
-        background: `linear-gradient(white ${100 - percentBySum}%, red 100%)`,
-      }}
-      className="cell"
-    >
-      {percentBySum}%
-    </div>
-  );
-};

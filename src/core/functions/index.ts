@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid";
 
-export const createNewRow = (columns) => {
+export const createNewRow = (columns:number) => {
   const row = [];
   for (let i = 0; i < columns; i++) {
     row.push({
@@ -11,7 +11,12 @@ export const createNewRow = (columns) => {
   return row;
 };
 
-export const getClosestCells = (matrix, currentCell, cellsCount) => {
+interface currentCell {
+ id: string;
+ value: number; 
+}
+
+export const getClosestCells = (matrix:any[], currentCell:currentCell, cellsCount:number) => {
   const allValues = matrix
     .map((el) => el.records)
     .flat()
@@ -26,7 +31,7 @@ export const getClosestCells = (matrix, currentCell, cellsCount) => {
   return allValues.slice(0, cellsCount);
 };
 
-export const createMatrix = (rows, columns) => {
+export const createMatrix = (rows:number, columns:number) => {
   const initMatrixWithRows = [];
   for (let i = 0; i < rows; i++) {
     initMatrixWithRows.push([]);

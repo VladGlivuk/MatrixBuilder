@@ -1,15 +1,16 @@
+import { ChangeEvent } from "react";
 import Input from "../../../shared/components/Input/Index";
-import "./SettingField.css";
+import styles from "./SettingField.module.scss";
 
 interface inputFormProps {
   label: string,
   inputValue: number,
-  inputChangeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void
+  inputChangeHandler: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
 const SettingField: React.FC <inputFormProps> = ({ label, inputValue, inputChangeHandler }) => {
   return (
-    <div className="main">
+    <div className={styles.main}>
       {label}
       <Input value={inputValue} onChange={inputChangeHandler} />
     </div>

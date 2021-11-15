@@ -1,15 +1,14 @@
-.add-row {
+.addRow {
   margin: 70px 0;
   display: flex;
   justify-content: center;
-}
-
-.add-row button {
-  color: #086B4A;
-  background-color: #E8FF00;
-  font-size: 22px;
-  width: 200px;
-  height: 70px;
-  border-radius: 30px;
-  font-weight: bold;
+  button {
+    color: #086b4a;
+    background-color: #e8ff00;
+    font-size: 22px;
+    width: 200px;
+    height: 70px;
+    border-radius: 30px;
+    font-weight: bold;
+  }
 }

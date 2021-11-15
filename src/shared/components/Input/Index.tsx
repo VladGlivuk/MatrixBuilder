@@ -1,13 +1,15 @@
-import "./Input.css";
+import { ChangeEvent, FC } from "react";
+import styles from "./Input.module.scss";
 
 interface InputProps {
-  value: number,
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  value: number;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input: React.FC <InputProps>  = ({ value, onChange }) => {
+const Input: FC<InputProps> = ({ value, onChange }) => {
   return (
     <input
+      className={styles.main}
       type="number"
       min="1"
       max="99"

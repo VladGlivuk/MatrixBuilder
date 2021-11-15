@@ -1,3 +1,4 @@
+import { ActionType, Cell, IMatrixReducer, Settings } from "./types";
 import {
   createMatrix,
   createNewRow,
@@ -12,23 +13,26 @@ import {
   SET_MATRIX,
 } from "../action-types";
 
-const initialState = {
+const initialState: IMatrixReducer = {
   globalMatrix: [],
   settings: { rows: 0, columns: 0, cells: 0 },
   closestCells: [],
 };
 
-const matrixReducer = (state = initialState, action) => {
+const matrixReducer = (
+  state = initialState,
+  action: ActionType
+): IMatrixReducer => {
   const { type, payload } = action;
 
   switch (type) {
     case SET_MATRIX: {
-      const { rows, columns } = payload;
+      const { rows, columns } = payload as Settings;
 
       return {
         ...state,
         globalMatrix: createMatrix(rows, columns),
-        settings: payload,
+        settings: payload as Settings,
       };
     }
 
@@ -56,12 +60,12 @@ const matrixReducer = (state = initialState, action) => {
     case INCREMENT: {
       const newMatrix = state.globalMatrix
         .map((row) =>
-          row.records.map((cell) =>
+          row.records.map((cell: Cell) =>
             cell.id === payload ? { ...cell, value: cell.value + 1 } : cell
           )
         )
         .map((row) => ({
-          sum: row.reduce((acc, curr) => acc + curr.value, 0),
+          sum: row.reduce((acc: number, curr: Cell) => acc + curr.value, 0),
           records: row,
         }));
 
@@ -76,18 +80,16 @@ const matrixReducer = (state = initialState, action) => {
         ...state,
         closestCells: getClosestCells(
           state.globalMatrix,
-          payload,
+          payload as Cell,
           state.settings.cells
         ),
       };
     }
 
     case ON_MOUSE_LEAVE_CELL: {
-      const reloadClosestCells = false;
-
       return {
         ...state,
-        closestCells: reloadClosestCells,
+        closestCells: [],
       };
     }
 

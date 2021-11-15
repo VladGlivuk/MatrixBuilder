@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { useDispatch } from "react-redux";
+import { MatrixRow as MatrixRowType } from "../../../store/matrixReducer/types";
 import { deleteRow } from "../../../store/matrixReducer/actions";
-import { DefaultCell, PercentCell } from "./MatrixCell/Renderers";
-import "./MatrixRow.css";
+import { DefaultCell } from "./MatrixCell/DefaultCell";
+import { PercentCell } from "./MatrixCell/PrecentCell";
+import styles from "./MatrixRow.module.scss";
 
-  interface MatrixRowProps {
-    row: object,
-    index: number
-  }
+interface MatrixRowProps {
+  row: MatrixRowType;
+  index: number;
+}
 
-const MatrixRow : React.FC <MatrixRowProps> = ({ row, index }) => {
+const MatrixRow: FC<MatrixRowProps> = ({ row, index }) => {
   const dispatch = useDispatch();
   const [isSumHover, setIsSumHover] = useState(false);
 
@@ -18,8 +20,8 @@ const MatrixRow : React.FC <MatrixRowProps> = ({ row, index }) => {
   };
 
   return (
-    <div className="row">
-      <span className="row__row-numbers">{index + 1}</span>
+    <div className={styles.row}>
+      <span className={styles.row__rowNumbers}>{index + 1}</span>
       {row.records.map((cell) =>
         isSumHover ? (
           <PercentCell key={cell.id} sumRow={row.sum} cellValue={cell.value} />
@@ -28,7 +30,7 @@ const MatrixRow : React.FC <MatrixRowProps> = ({ row, index }) => {
         )
       )}
       <span
-        className="sum"
+        className={styles.row__sum}
         onMouseEnter={() => setIsSumHover(true)}
         onMouseLeave={() => setIsSumHover(false)}
       >
@@ -36,7 +38,7 @@ const MatrixRow : React.FC <MatrixRowProps> = ({ row, index }) => {
       </span>
       <button
         onClick={buttonClickHandler}
-        className="btn-delete fa fa-trash btn-light"
+        className={`fa fa-trash btn-light ${styles.row__btnDelete}`}
       />
     </div>
   );

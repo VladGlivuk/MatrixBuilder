@@ -1,11 +1,12 @@
-import "./App.css";
-import "./normalize.css";
+import { FC } from "react";
 import MatrixSettings from "./components/MatrixSettings";
 import MatrixTable from "./components/MatrixTable";
+import styles from "./App.module.scss";
+import "./normalize.module.scss";
 
-const App: React.FC = () => {
+const App: FC = () => {
   return (
-    <div className="wrapper">
+    <div className={styles.wrapper}>
       <MatrixSettings />
       <MatrixTable />
     </div>

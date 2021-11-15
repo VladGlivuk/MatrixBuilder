@@ -2,8 +2,11 @@ import { combineReducers } from "redux";
 import { createStore } from "redux";
 import matrixReducer from "./matrixReducer/reducer";
 
-const store = combineReducers({
+const rootReducer = combineReducers({
   matrix: matrixReducer,
 });
 
-export default createStore(store);
+const store = createStore(rootReducer);
+
+export type IStore = ReturnType<typeof rootReducer>;
+export default store;
