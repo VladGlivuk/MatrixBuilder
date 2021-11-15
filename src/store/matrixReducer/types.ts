@@ -6,6 +6,7 @@ import {
   ON_MOUSE_LEAVE_CELL,
   SET_MATRIX,
 } from "./../action-types";
+
 export type Settings = {
   rows: number;
   columns: number;
@@ -53,7 +54,7 @@ type FindClosestCellByValue = {
   payload: Cell;
 };
 
-type OnMouseLeaveCell = {
+type ResetClosestCell = {
   type: typeof ON_MOUSE_LEAVE_CELL;
   payload: Cell;
 };
@@ -64,4 +65,4 @@ export type ActionType =
   | AddRow
   | Increment
   | FindClosestCellByValue
-  | OnMouseLeaveCell;
+  | ResetClosestCell;

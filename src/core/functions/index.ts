@@ -1,4 +1,5 @@
 import { nanoid } from "nanoid";
+import { MatrixRow } from "../../store/matrixReducer/types";
 
 export const createNewRow = (columns:number) => {
   const row = [];
@@ -16,7 +17,7 @@ interface currentCell {
  value: number; 
 }
 
-export const getClosestCells = (matrix:any[], currentCell:currentCell, cellsCount:number) => {
+export const getClosestCells = (matrix:Array<MatrixRow>, currentCell:currentCell, cellsCount:number) => {
   const allValues = matrix
     .map((el) => el.records)
     .flat()
@@ -37,15 +38,9 @@ export const createMatrix = (rows:number, columns:number) => {
     initMatrixWithRows.push([]);
   }
   const createdMatrix = initMatrixWithRows.map(() => {
-    // const arrWithValues = [...rowArr];
+    
     const newRow = createNewRow(columns);
 
-    // for (let i = 0; i < columns; i++) {
-    //   arrWithValues.push({
-    //     id: nanoid(),
-    //     value: Math.floor(Math.random() * (999 - 100 + 1) + 100),
-    //   });
-    // }
     return {
       records: newRow,
       sum: newRow.reduce((acc, curr) => acc + curr.value, 0),
