@@ -12,12 +12,7 @@ import {
   ON_MOUSE_LEAVE_CELL,
   SET_MATRIX,
 } from "../action-types";
-
-const initialState: IMatrixReducer = {
-  globalMatrix: [],
-  settings: { rows: 0, columns: 0, cells: 0 },
-  closestCells: [],
-};
+import { initialState } from "./helpers";
 
 const matrixReducer = (
   state = initialState,
